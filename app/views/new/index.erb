@@ -1,5 +1,14 @@
 <h2>Add a song to the music wall</h2>
 
+<% if @song && @song.errors.any? %>
+  <p>Submission failed for the following reasons:</p>
+  <ul>
+    <% @song.errors.full_messages.each do |message| %>
+      <li><%= message%></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <form method='post' action='/'>
   <div>
     <label>Song Title</label>

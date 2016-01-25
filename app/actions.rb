@@ -10,9 +10,12 @@ post '/' do
     author: params[:author],
     url: params[:url]
   )
-  @song.save!
-
-  halt 201
+  
+  if @song.save
+    redirect '/'
+  else
+    erb :'new/index'
+  end
 end
 
 get '/new' do
