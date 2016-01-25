@@ -4,8 +4,11 @@
   <a class='btn btn-primary' href='/new' >Add song</a>
 </div>
 
-<% @songs.each do |song| %>
-<h3><%= song.title%> by <%= song.author%></h3>
-<a href='<%= song.url%>'><%= song.url%></a>
-<div>___</div>
-<% end %>
+<ul class='list-group list-group-songs'>
+  <% @songs.each do |song| %>
+  <li class='list-group-item'>
+    <% if song.url && !song.url.empty? %><a class='badge' href='<%= song.url%>'>Listen</a><% end %>
+    <%= song.title%> - <%= song.author%> 
+  </li>
+  <% end %>
+</ul>
