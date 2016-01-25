@@ -1,5 +1,9 @@
 <h1>Music Wall</h1>
 
+<span><a href='/new'>Add song</a> to the wall</span>
+
+<hr>
+
 <% @songs.each do |song| %>
   <h3><%= song.title%> by <%= song.author%></h3>
   <a href='<%= song.url%>'><%= song.url%></a>
