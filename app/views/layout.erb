@@ -16,6 +16,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
+        <a class="navbar-brand" href="/">MusicWall</a>
         <% if @user %>
           <form method='POST' action='/signout' class='navbar-right'>
             <input type='hidden' name='sign_out' value='true'>

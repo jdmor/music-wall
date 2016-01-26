@@ -5814,7 +5814,7 @@ button.close {
 
 .navbar-header {
   width: 100%; }
-  .navbar-header a, .navbar-header button {
+  .navbar-header .btn {
     margin-top: 8px;
     margin-bottom: 8px;
     margin-left: 8px; }
