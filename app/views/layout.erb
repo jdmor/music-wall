@@ -12,6 +12,8 @@
 <body>
   <div id='main' class='container-fluid'>
     <%= yield %>
+    <br>
+    <p>Current user: <%= session['user_id']%></p>
   </div>
 </body>
 </html>

@@ -34,9 +34,17 @@ post '/login' do
   if params[:email].empty? || params[:password].empty?
     erb :'login/index'
   else
-    user = User.find_by(email: params[:email], password: params[:password])
-    user ? redirect('/') : erb(:'login/index')
+    user = User.find_by(email: params[:email], password: params[:password]) 
   end
+
+  if user
+    session["user_id"] = user.id
+    puts session["user_id"]
+    redirect('/')
+  else
+    erb(:'login/index')
+  end
+
 end
 
 post '/create-account' do
