@@ -1,9 +1,13 @@
 helpers do
-  # create methods that your views can use.  
+  def poster_email(id)
+    User.find_by(id: id).email
+  end
 end
 
 get '/' do
-  @songs = Song.select('songs.id, COUNT(upvotes.song_id) AS song_upvotes').joins('LEFT OUTER JOIN upvotes ON upvotes.song_id = songs.id').group('songs.id').order('song_upvotes DESC')
+  @songs = Song.select('songs.id, songs.title, songs.author, songs.url, upvotes.user_id, COUNT(upvotes.song_id) AS upvote_count')
+  @songs = @songs.joins('LEFT OUTER JOIN upvotes ON upvotes.song_id = songs.id')
+  @songs = @songs.group('songs.id').order('upvote_count DESC')
   erb :index
 end
 

@@ -5,8 +5,8 @@
 </div>
 
 <ul class='list-group list-group-songs'>
+
   <% @songs.each do |song| %>
-  <% song = Song.find(song[:id])%>
   <li class='list-group-item'>
     <div class='row'>
       <div class='col-xs-9'>
@@ -14,16 +14,17 @@
           <%= song.title%> - <%= song.author%>
           <% if song.url && !song.url.empty? %><a href='<%= song.url %>'><span class='glyphicon glyphicon-link'></span></a><% end %>
         </h4>
-        <p class="list-group-item-text">Posted by <%= song.user_id && User.find_by(id: song.user_id).email %></p>
+        <p class="list-group-item-text">Posted by <%= song.user_id && poster_email(song.user_id) %></p>
       </div>
       <div class='col-xs-3'>
         <form method='post' action='/upvote' class='form-upvote'>
           <input type='hidden' name='song_id' value='<%= song.id %>'>
           <button type='submit' class='btn btn-link'><span class='glyphicon glyphicon-circle-arrow-up'></span></button>
         </form>
-        <span class='badge'><%= song.upvotes.count %></span>
+        <span class='badge'><%= song.upvote_count %></span>
       </div>
     </div>
   </li>
   <% end %>
+
 </ul>
