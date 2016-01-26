@@ -6,10 +6,14 @@
 
 <ul class='list-group list-group-songs'>
   <% @songs.each do |song| %>
+  <% song = Song.find(song[:id])%>
   <li class='list-group-item'>
     <div class='row'>
       <div class='col-xs-9'>
-        <h4 class='list-group-item-heading'><%= song.title%> - <%= song.author%></h4>
+        <h4 class='list-group-item-heading'>
+          <%= song.title%> - <%= song.author%>
+          <% if song.url && !song.url.empty? %><a href='<%= song.url %>'><span class='glyphicon glyphicon-link'></span></a><% end %>
+        </h4>
         <p class="list-group-item-text">Posted by <%= song.user_id && User.find_by(id: song.user_id).email %></p>
       </div>
       <div class='col-xs-3'>
