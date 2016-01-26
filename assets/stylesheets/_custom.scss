@@ -1,5 +1,15 @@
-#main {
+#main, .navbar > .container-fluid {
   max-width: 780px;
+}
+
+.navbar-header {
+  width: 100%;
+
+  a {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+  }
 }
 
 .intro {
