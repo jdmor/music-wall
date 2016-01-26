@@ -1,0 +1,26 @@
+<div class='form-wrapper'>
+
+<% if @user && @user.errors.any? %>
+  <p>Could not create an account:</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message%></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <h3>Create Account</h3>
+
+  <form method='post' action='/create-account'>
+    <div class='form-group'>
+      <label for='formEmail'>Email</label>
+      <input id='formEmail' class='form-control' type='text' name='email' value='<%= @user && @user.email %>'>
+    </div>
+    <div class='form-group'>
+      <label for='formPassword'>Password</label>
+      <input id='formPassword' class='form-control' type='password' name='password' value=''>
+    </div>
+    <button type='submit' class='btn btn-primary'>Create Account</button>
+  </form>
+  
+</div>
