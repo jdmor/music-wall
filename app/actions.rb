@@ -1,11 +1,21 @@
 helpers do
+
+  def current_user
+    session['user_id']
+  end
+
   def poster_email(id)
     User.find_by(id: id).email
   end
+
+  def already_upvoted?(song_id, user_id)
+    Upvote.find_by song_id: song_id, user: user_id
+  end
+
 end
 
 get '/' do
-  @songs = Song.select('songs.id, songs.title, songs.author, songs.url, upvotes.user_id, COUNT(upvotes.song_id) AS upvote_count')
+  @songs = Song.select('songs.id, songs.title, songs.author, songs.url, songs.user_id, COUNT(upvotes.song_id) AS upvote_count')
   @songs = @songs.joins('LEFT OUTER JOIN upvotes ON upvotes.song_id = songs.id')
   @songs = @songs.group('songs.id').order('upvote_count DESC')
   erb :index
@@ -28,7 +38,7 @@ post '/' do
     title: params[:title],
     author: params[:author],
     url: params[:url],
-    users_id: session['user_id']
+    user_id: session['user_id']
   )
   
   if @song.save
@@ -39,13 +49,9 @@ post '/' do
 end
 
 post '/login' do
-  if params[:email].empty? || params[:password].empty?
-    erb :'login/index'
-  else
-    user = User.find_by(email: params[:email], password: params[:password]) 
-  end
+  user = User.find { |u| u.email == params[:email] }
 
-  if user
+  if user && user.password == params[:password]
     session['user_id'] = user.id
     redirect '/'
   else

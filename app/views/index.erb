@@ -17,10 +17,16 @@
         <p class="list-group-item-text">Posted by <%= song.user_id && poster_email(song.user_id) %></p>
       </div>
       <div class='col-xs-3'>
-        <form method='post' action='/upvote' class='form-upvote'>
+
+        <% if current_user && already_upvoted?(song.id, current_user) %>
+          <a class='btn btn-link disabled'><span class='glyphicon glyphicon-circle-arrow-up upvote-wrapper'></span></a>
+        <% else %>
+        <form method='post' action='/upvote' class='upvote-wrapper'>
           <input type='hidden' name='song_id' value='<%= song.id %>'>
           <button type='submit' class='btn btn-link'><span class='glyphicon glyphicon-circle-arrow-up'></span></button>
         </form>
+        <% end %>
+
         <span class='badge'><%= song.upvote_count %></span>
       </div>
     </div>
