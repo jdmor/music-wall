@@ -21,3 +21,7 @@ end
 get '/new' do
   erb :'new/index'
 end
+
+get '/login' do
+  erb :'login/index'
+end
