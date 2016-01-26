@@ -33,6 +33,16 @@ get '/create-account' do
   erb :'create-account/index'
 end
 
+get '/details/:id' do
+  @song = Song.find_by id: params[:id]
+
+  if @song
+    erb :'details/index'
+  else
+    halt 404, "Page doesn't exist"
+  end
+end
+
 post '/' do
   @song = Song.new(
     title: params[:title],
