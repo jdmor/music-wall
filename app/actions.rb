@@ -20,7 +20,8 @@ post '/' do
   @song = Song.new(
     title: params[:title],
     author: params[:author],
-    url: params[:url]
+    url: params[:url],
+    users_id: session['user_id']
   )
   
   if @song.save
