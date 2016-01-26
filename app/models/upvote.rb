@@ -6,7 +6,7 @@ class Upvote < ActiveRecord::Base
   validates :user_id, presence: true
   validate :user_can_upvote
 
-  def first_upvote
+  def user_can_upvote
     errors.add(:user_can_upvote, 'a song only once.') if Upvote.find_by song_id: song_id, user_id: user_id
   end
 end

@@ -65,3 +65,8 @@ post '/signout' do
   session['user_id'] = nil if params[:sign_out]
   redirect '/'
 end
+
+post '/upvote' do
+  upvote = Upvote.create! song_id: params[:song_id], user_id: session['user_id']
+  redirect '/'
+end

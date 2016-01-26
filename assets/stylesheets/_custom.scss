@@ -32,12 +32,20 @@
 .list-group-songs {
   margin: 2rem auto 0;
 
-  .badge:hover {
-    background-color: #000;
+  .glyphicon-circle-arrow-up {
+    font-size: 24px;
+  }
+
+  .badge {
+    font-size: 16px;
   }
 }
 
 .form-wrapper {
   margin-left: auto;
   margin-right: auto;
+}
+
+.form-upvote {
+  display: inline-block;
 }

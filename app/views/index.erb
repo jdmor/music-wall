@@ -7,9 +7,19 @@
 <ul class='list-group list-group-songs'>
   <% @songs.each do |song| %>
   <li class='list-group-item'>
-    <% if song.url && !song.url.empty? %><a class='badge' href='<%= song.url%>'>Listen</a><% end %>
-    <h4 class='list-group-item-heading'><%= song.title%> - <%= song.author%></h4>
-    <p class="list-group-item-text">Posted by <%= song.user_id && User.find_by(id: song.user_id).email %></p>
+    <div class='row'>
+      <div class='col-xs-9'>
+        <h4 class='list-group-item-heading'><%= song.title%> - <%= song.author%></h4>
+        <p class="list-group-item-text">Posted by <%= song.user_id && User.find_by(id: song.user_id).email %></p>
+      </div>
+      <div class='col-xs-3'>
+        <form method='post' action='/upvote' class='form-upvote'>
+          <input type='hidden' name='song_id' value='<%= song.id %>'>
+          <button type='submit' class='btn btn-link'><span class='glyphicon glyphicon-circle-arrow-up'></span></button>
+        </form>
+        <span class='badge'><%= song.upvotes.count %></span>
+      </div>
+    </div>
   </li>
   <% end %>
 </ul>
