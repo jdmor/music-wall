@@ -5822,5 +5822,12 @@ button.close {
 .list-group-songs {
   margin: 2rem auto 0;
   max-width: 500px; }
+  .list-group-songs .badge:hover {
+    background-color: #000; }
 
-/*# sourceMappingURL=style.css.map */
+.form-wrapper {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto; }
+
+/*# sourceMappingURL=application.css.map */

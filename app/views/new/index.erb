@@ -1,30 +1,30 @@
-<h2>Add a song to the music wall</h2>
-
-<% if @song && @song.errors.any? %>
+<div class='form-wrapper'>
+  <% if @song && @song.errors.any? %>
   <p>Submission failed for the following reasons:</p>
   <ul>
     <% @song.errors.full_messages.each do |message| %>
-      <li><%= message%></li>
+    <li><%= message%></li>
     <% end %>
   </ul>
-<% end %>
+  <% end %>
 
-<form method='post' action='/'>
-  <div>
-    <label>Song Title</label>
-    <input type='text' name='title' value='<%= @song && @song.title %>'>
-  </div>
-  <div>
-    <label>Artist Name</label>
-    <input type='text' name='author' value='<%= @song && @song.author %>'>
-  </div>
-  <div>
-    <label>Song URL (optional)</label>
-    <input type='text' name='url' value='<%= @song && @song.url %>'>
-  </div>
-  <button>Submit</button>
-</form>
+  <h3>Add a song to the music wall</h3>
 
-<hr>
-
-<span><a href='/'>Back to Music Wall</a></span>
+  <form method='post' action='/'>
+    <div class='form-group'>
+      <label for='formTitle'>Song Title</label>
+      <input id='formTitle' class='form-control' type='text' name='title' value='<%= @song && @song.title %>'>
+    </div>
+    <div class='form-group'>
+      <label for='formAuthor' >Artist Name</label>
+      <input id='formAuthor' class='form-control' type='text' name='author' value='<%= @song && @song.author %>'>
+    </div>
+    <div class='form-group'>
+      <label for='formURL'>Song URL (optional)</label>
+      <input id='formURL' class='form-control' type='text' name='url' value='<%= @song && @song.url %>'>
+    </div>
+    <button type='submit' class='btn btn-primary'>Submit</button>
+    <a class='btn btn-link' href='/'>Back to Wall</a>
+  </form>
+  
+</div>
