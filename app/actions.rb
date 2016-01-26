@@ -25,3 +25,12 @@ end
 get '/login' do
   erb :'login/index'
 end
+
+post '/login' do
+  if params[:email].empty? || params[:password].empty?
+    erb :'login/index'
+  else
+    user = User.find_by(email: params[:email], password: params[:password])
+    user ? redirect('/') : erb(:'login/index')
+  end
+end
