@@ -70,6 +70,10 @@ get '/signout' do
 end
 
 post '/upvote' do
-  upvote = Upvote.create! song_id: params[:song_id], user_id: session['user_id']
-  redirect '/'
+  upvote = Upvote.new song_id: params[:song_id], user_id: session['user_id']
+  if upvote.save
+    redirect '/'
+  else
+    redirect '/login' 
+  end
 end
