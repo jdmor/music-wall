@@ -9,7 +9,7 @@
   <li class='list-group-item'>
     <% if song.url && !song.url.empty? %><a class='badge' href='<%= song.url%>'>Listen</a><% end %>
     <h4 class='list-group-item-heading'><%= song.title%> - <%= song.author%></h4>
-    <p class="list-group-item-text">Posted by <%= song.users_id && User.find_by(id: song.users_id).email %></p>
+    <p class="list-group-item-text">Posted by <%= song.user_id && User.find_by(id: song.user_id).email %></p>
   </li>
   <% end %>
 </ul>
