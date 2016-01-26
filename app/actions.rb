@@ -38,11 +38,10 @@ post '/login' do
   end
 
   if user
-    session["user_id"] = user.id
-    puts session["user_id"]
-    redirect('/')
+    session['user_id'] = user.id
+    redirect '/'
   else
-    erb(:'login/index')
+    erb :'login/index'
   end
 
 end
@@ -58,4 +57,9 @@ post '/create-account' do
   else
     erb :'create-account/index'
   end
+end
+
+post '/signout' do
+  session['user_id'] = nil if params[:sign_out]
+  redirect '/'
 end

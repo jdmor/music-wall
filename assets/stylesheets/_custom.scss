@@ -1,14 +1,19 @@
 #main, .navbar > .container-fluid {
-  max-width: 780px;
+  max-width: 500px;
 }
 
 .navbar-header {
   width: 100%;
 
-  a {
+  a, button {
     margin-top: 8px;
     margin-bottom: 8px;
     margin-left: 8px;
+  }
+
+  .navbar-right {
+    margin-right: 0;
+    float: right;
   }
 }
 
@@ -26,7 +31,6 @@
 
 .list-group-songs {
   margin: 2rem auto 0;
-  max-width: 500px;
 
   .badge:hover {
     background-color: #000;
@@ -34,7 +38,6 @@
 }
 
 .form-wrapper {
-  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
