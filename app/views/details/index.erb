@@ -7,6 +7,7 @@
 <div class='form-wrapper'>
   <form method='post'>
     <div class='form-group'>
+      <input type='hidden' name='review_action' value='add_review'>
       <label for='formContent'>Leave a review</label>
       <textarea id='formContent' class='form-control' name='content'></textarea>
     </div>
@@ -25,7 +26,7 @@
   <% if review.user_id == current_user %>
     <div class='well well-sm'>
       <form method='post'>
-        <input type='hidden' name='remove_review' value='true'>
+        <input type='hidden' name='review_action' value='remove_review'>
         <button class='btn btn-link btn-remove-review'>
           <span class='glyphicon glyphicon-remove-sign'></span>
         </button>

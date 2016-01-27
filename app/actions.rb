@@ -108,14 +108,12 @@ post '/upvote' do
 end
 
 post '/details/:id' do
-  # saving reviews to the page
-  # removing reviews from the page
-  
-  review = Review.new song_id: params[:id], user_id: session['user_id'], content: params[:content]
-  if review.save
-    @review_saved = true
-  else
-    @review_saved = false
+  case params[:review_action]
+  when 'add_review'
+    Review.create song_id: params[:id], user_id: session['user_id'], content: params[:content]
+  when 'remove_review'
+    Review.find_by(song_id: params[:id], user_id: current_user).destroy
   end
-  redirect "/details/#{params[:id]}"
+
+  redirect "/details/#{params[:id]}"  
 end
