@@ -110,7 +110,12 @@ end
 post '/details/:id' do
   case params[:review_action]
   when 'add_review'
-    Review.create song_id: params[:id], user_id: session['user_id'], content: params[:content]
+    Review.create(
+      song_id: params[:id], 
+      user_id: session['user_id'], 
+      content: params[:content],
+      rating: params[:rating]
+    )
   when 'remove_review'
     Review.find_by(song_id: params[:id], user_id: current_user).destroy
   end

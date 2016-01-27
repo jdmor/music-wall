@@ -6,10 +6,20 @@
 <% if current_user && allowed_to_review?(@song.id) %>
 <div class='form-wrapper'>
   <form method='post'>
+    <input type='hidden' name='review_action' value='add_review'>
     <div class='form-group'>
-      <input type='hidden' name='review_action' value='add_review'>
       <label for='formContent'>Leave a review</label>
       <textarea id='formContent' class='form-control' name='content'></textarea>
+    </div>
+    <div class='form-group'>
+      <label for='formRating'>Rating</label>
+      <select id='formRating' class='form-control' name='rating'>
+        <option value='1'>1</option> 
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+      </select>
     </div>
     <button type='submit' class='btn btn-primary'>Submit</button>
   </form>
@@ -17,7 +27,7 @@
 <% elsif current_user %>
 <% # Nothing if current user already submitted a review %>
 <% else %>
-<p><a href='/login'><strong>Sign in</strong></a> to leave a review.</p>
+<p><a href='/login'><strong>Log in</strong></a> to leave a review.</p>
 <% end %>
 
 <h4>Latest Reviews</h4>
