@@ -41,9 +41,19 @@
           <span class='glyphicon glyphicon-remove-sign'></span>
         </button>
       </form>
+      <div>
+        <% review.rating.times do |i| %>
+        <span class='glyphicon glyphicon-star'></span>
+        <% end %>
+      </div>
       <p><%= review.content %> // <%= poster_email(review.user_id) %></p>
     </div>
   <% else %>
+    <div>
+      <% review.rating.times do |i| %>
+        <span class='glyphicon glyphicon-star'></span>
+      <% end %>
+    </div>
     <p><%= review.content %> // <%= poster_email(review.user_id) %></p>
   <% end %>  
 <% end %>  
