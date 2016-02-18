@@ -1,10 +1,13 @@
-Sinatra
-=============
+# Music Wall
 
-Brought to you by Lighthouse Labs
+An app for sharing and upvoting music. Users can sign up and leave reviews for each song. My first implementation of Sinatra and ActiveRecord. Built over 3 days and styled with Bootstrap.
 
-## Getting Started
+## Languages, Libraries, and Frameworks
 
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
+Ruby, Sinatra, ActiveRecord, Bootstrap
+
+## Features
+
+- Users can sign up for a Music Wall account.
+- Users can add a song to the community wall.
+- Users can upvote songs they like. They cannot upvote a song more than once.
