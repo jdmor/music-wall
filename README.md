@@ -1,6 +1,6 @@
 # Music Wall
 
-An app for sharing and upvoting music. Users can sign up and leave reviews for each song. My first implementation of Sinatra and ActiveRecord. Built over 3 days and styled with Bootstrap.
+An app for sharing and upvoting music. Users can sign up and leave reviews for each song. My first implementation of Sinatra and ActiveRecord. Built over 3 days in a web development bootcamp and styled with Bootstrap.
 
 ## Languages, Libraries, and Frameworks
 
